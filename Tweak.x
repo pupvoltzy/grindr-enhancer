@@ -1,3 +1,5 @@
+// Grindr
+
 // Root View Controller
 @interface _TtC7grindrx27RootContainerViewController : UIView
 -(void)addBannerAdHideFactor:(NSInteger)adHideFactor;
@@ -89,7 +91,7 @@
 	}
 %end
 
-
+// Fyber ads
 
 %hook IAViewUnitController
 	- (void)showAdInParentView:(id)parentView {
@@ -139,6 +141,8 @@
 	}
 %end
 
+// AdColony Ads
+
 %hook AdColonyInterstitial
 	- (bool)showWithPresentingViewController:(id)viewController {
 		return NO;
@@ -177,6 +181,8 @@
 	}
 %end
 
+// Vungle Ads
+
 %hook VungleRouter
 	- (void)vungleWillShowAdForPlacementID:(id)placementId {
 		return;
@@ -192,6 +198,8 @@
 		return NO;
 	}
 %end
+
+// MoPub Ads
 
 %hook MPBannerAdManager
 	- (bool)requestingAdapterIsReadyToBePresented {
