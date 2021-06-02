@@ -1,9 +1,7 @@
-// Grindr
-
 // Root View Controller
 @interface _TtC7grindrx27RootContainerViewController : UIView
--(void)addBannerAdHideFactor:(NSInteger)adHideFactor;
--(void)removeBannerAdHideFactor:(NSInteger)adHideFactor;
+	- (void)addBannerAdHideFactor: (NSInteger)adHideFactor;
+	- (void)removeBannerAdHideFactor: (NSInteger)adHideFactor;
 @end
 
 %hook _TtC7grindrx27RootContainerViewController
@@ -23,7 +21,7 @@
 	}
 
 	// Ensure that the ad height doesn't come back
-	- (void)removeBannerAdHideFactor:(NSInteger)adHideFactor {
+	- (void)removeBannerAdHideFactor: (NSInteger)adHideFactor {
 		[self addBannerAdHideFactor:1];
 		return;
 	}
@@ -58,7 +56,7 @@
 		return NO;
 	}
 
-	- (void)setIsEnabled:(bool)isEnabled {
+	- (void)setIsEnabled: (bool)isEnabled {
 		return;
 	}
 %end
@@ -68,7 +66,7 @@
 		return NO;
 	}
 
-	- (void)setEnabled:(bool)enabled {
+	- (void)setEnabled: (bool)enabled {
 		return;
 	}
 %end
