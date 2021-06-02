@@ -90,146 +90,50 @@
 %end
 
 // Fyber ads
-
-%hook IAViewUnitController
-	- (void)showAdInParentView:(id)parentView {
+%hook IASDKCore
+	- (void)initWithAppID: (id)appId {
 		return;
 	}
-%end
-
-%hook IANativeUnitController
-	- (void)showAdInNativeRenderer:(id)nativeRenderer {
-		return;
-	}
-%end
-
-%hook IAFullscreenUnitController
-	- (void)showAdAnimated:(bool) completion: (id)adId {
-		return;
-	}
-%end
-
-%hook IABaseView
-	- (bool)isAdReportingEnabled {
-		return NO;
-	}
-
-	- (void)setAdReportingEnabled: (bool)enabled {
-		return;
-	}
-%end
-
-%hook IAAdSourceController
-	- (bool)enabled {
-		return NO;
-	}
-
-	- (void)setEnabled: (bool)enabled {
-		return;
-	}
-%end
-
-%hook IAServerAdSource
-	- (bool)enabled {
-		return NO;
-	}
-
-	- (void)setEnabled: (bool)enabled {
+	- (void)initWithAppID: (id)appId: (id)FairBidSDKVersion {
 		return;
 	}
 %end
 
 // AdColony Ads
-
-%hook AdColonyInterstitial
-	- (bool)showWithPresentingViewController:(id)viewController {
-		return NO;
-	}
-%end
-
-%hook AdColonyAdOptions
-	- (bool)showPrePopup {
-		return NO;
-	}
-
-	- (bool)showPostPopup {
-		return NO;
-	}
-%end
-
 %hook AdColony
-	- (bool)showingInterstitial {
-		return NO;
-	}
-%end
-
-%hook AdColonyZone
-	- (void)setEnabled: (bool)enabled {
+	- (void)configureWithAppID: (id)appId: (id)zoneIDs: (id)options: (bool)forceIt: (id)completion {
 		return;
 	}
-%end
-
-%hook AdColonyInstanceMediationOptions
-	- (bool)showPrePopup {
-		return NO;
-	}
-
-	- (bool)showPostPopup {
-		return NO;
+	- (void)configureWithAppID: (id)appId: (id)zoneIDs: (id)options: (id)completion {
+		return;
 	}
 %end
 
 // Vungle Ads
+%hook VungleSDK
+	- (bool)startWithAppId: (id)appId: (id)placements: (id *)error {
+		return false;
+	}
+	- (bool)startWithAppId: (id)appId: (id *)error {
+		return false;
+	}
+%end
 
 %hook VungleRouter
-	- (void)vungleWillShowAdForPlacementID:(id)placementId {
+	- (void)vungleSDKDidInitialize {
 		return;
 	}
 %end
 
-%hook VungleAdLegacy
-	- (bool)ctaDisplayOntouch {
-		return NO;
-	}
-
-	- (bool)ctaEnabled {
-		return NO;
+%hook VungleSDKInitializer
+	- (bool)didInitialize {
+		return false;
 	}
 %end
 
 // MoPub Ads
-
-%hook MPBannerAdManager
-	- (bool)requestingAdapterIsReadyToBePresented {
-		return NO;
-	}
-	
-	- (bool)adActionInProgress {
-		return NO;
-	}
-	
-	- (bool)hasRequestedAtLeastOneAd {
-		return NO;
-	}
-%end
-
-%hook MPFullscreenAdAdapter
-	- (bool)hasAdAvailable {
-		return NO;
-	}
-	- (void)setHasAdAvailable:(bool)available {
-		return;
-	}
-	- (bool)hasSuccessfullyLoaded {
-		return NO;
-	}
-	- (void)setHasSuccessfullyLoaded:(bool)loaded {
-		return;
-	}
-%end
-
-%hook MPFullscreenAdViewController
-	- (void)viewWillAppear:(bool)willAppear {
+%hook MoPub
+	- (void)initializeSdkWithConfiguration: (id)config: (id)completion {
 		return;
 	}
 %end
