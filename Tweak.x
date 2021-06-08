@@ -137,3 +137,25 @@
 		return;
 	}
 %end
+
+// Braze (Appboy) Ads
+%hook Appboy
+	- (bool)startWithApiKey: (id)apiKey: (id)inApplication: (id)withLaunchOptions: (id)withAppboyOptions {
+		return false;
+	}
+	- (bool)startWithApiKey: (id)apiKey: (id)inApplication: (id)withLaunchOptions {
+		return false;
+	}
+%end
+
+// AppsFlyer
+%hook AppsFlyerUtils
+	- (void)initialize {
+		return;
+	}
+%end
+%hook AppsFlyerRequestCache
+	- (void)initialize {
+		return;
+	}
+%end
