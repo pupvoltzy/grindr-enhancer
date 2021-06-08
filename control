@@ -1,6 +1,6 @@
 Package: com.pupvoltzy.grindrenhancer
 Name: Grindr Enhancer
-Version: 0.1.1
+Version: 0.2.0
 Architecture: iphoneos-arm
 Description: Enhance your experience using Grindr. Currently supports blocking (some) ads.
 Maintainer: PupVoltzy
