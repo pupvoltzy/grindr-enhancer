@@ -61,6 +61,15 @@
 	}
 %end
 
+%hook _TtC7grindrx11AppDelegate
+	- (bool)application: (id)didFinishLaunchingWithOptions: (id)options {
+		return NO;
+	}
+	- (void)applicationDidBecomeActive: (id)arg1 {
+		return;
+	}
+%end
+
 %hook GRAdManager
 	- (bool)isEnabled {
 		return NO;
@@ -83,18 +92,17 @@
 	}
 %end
 
-%hook GRInterstitialMoPub
-	- (bool)isShowingBlockingModal {
-		return NO;
-	}
-%end
-
-// Fyber ads
+// Inneractive/Fyber ads
 %hook IASDKCore
 	- (void)initWithAppID: (id)appId {
 		return;
 	}
 	- (void)initWithAppID: (id)appId: (id)FairBidSDKVersion {
+		return;
+	}
+%end
+%hook IASDKMopubAdapterConfiguration
+	+ (void)initialize {
 		return;
 	}
 %end
@@ -104,7 +112,7 @@
 	- (void)configureWithAppID: (id)appId: (id)zoneIDs: (id)options: (bool)forceIt: (id)completion {
 		return;
 	}
-	- (void)configureWithAppID: (id)appId: (id)zoneIDs: (id)options: (id)completion {
+	+ (void)configureWithAppID: (id)appId: (id)zoneIDs: (id)options: (id)completion {
 		return;
 	}
 %end
@@ -112,10 +120,13 @@
 // Vungle Ads
 %hook VungleSDK
 	- (bool)startWithAppId: (id)appId: (id)placements: (id *)error {
-		return false;
+		return NO;
 	}
 	- (bool)startWithAppId: (id)appId: (id *)error {
-		return false;
+		return NO;
+	}
+	- (bool)didStartup {
+		return NO;
 	}
 %end
 
@@ -127,7 +138,7 @@
 
 %hook VungleSDKInitializer
 	- (bool)didInitialize {
-		return false;
+		return NO;
 	}
 %end
 
@@ -136,15 +147,34 @@
 	- (void)initializeSdkWithConfiguration: (id)config: (id)completion {
 		return;
 	}
+	- (bool)isSdkInitialized {
+		return NO;
+	}
+%end
+
+%hook GRInterstitialMoPub
+	- (void)show {
+		return;
+	}
+%end
+
+// Hybid
+%hook HyBid
+	+ (void)initWithAppToken: (id)token: (id)completion {
+		return;
+	}
 %end
 
 // Braze (Appboy) Ads
 %hook Appboy
-	- (bool)startWithApiKey: (id)apiKey: (id)inApplication: (id)withLaunchOptions: (id)withAppboyOptions {
-		return false;
+	+ (bool)startWithApiKey: (id)apiKey: (id)inApplication: (id)withLaunchOptions: (id)withAppboyOptions {
+		return NO;
 	}
-	- (bool)startWithApiKey: (id)apiKey: (id)inApplication: (id)withLaunchOptions {
-		return false;
+	+ (bool)startWithApiKey: (id)apiKey: (id)inApplication: (id)withLaunchOptions {
+		return NO;
+	}
+	+ (bool)isSDKDisabled {
+		return YES;
 	}
 %end
 
@@ -156,6 +186,13 @@
 %end
 %hook AppsFlyerRequestCache
 	- (void)initialize {
+		return;
+	}
+%end
+
+// Smaato
+%hook SmaatoSDK 
+	+ (void)initSDKWithConfig: (id)config {
 		return;
 	}
 %end
