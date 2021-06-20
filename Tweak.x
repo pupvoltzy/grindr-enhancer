@@ -196,3 +196,14 @@
 		return;
 	}
 %end
+
+@interface _TtC7grindrx16ViewedMeUserCell : UITableViewCell
+	- (id)initWithStyle: (NSInteger) style : (id)reuseIdentifier;
+@end
+
+// Redirect Blurred ViewedMeUserCell to standard (super/parent class)
+%hook _TtC7grindrx23BlurredViewedMeUserCell
+	- (id)initWithStyle: (NSInteger)style: (id)reuseIdentifier {
+		return (_TtC7grindrx23BlurredViewedMeUserCell *)[[objc_getClass("_TtC7grindrx16ViewedMeUserCell") alloc] initWithStyle:style:reuseIdentifier];
+	}
+%end
