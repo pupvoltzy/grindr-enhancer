@@ -32,7 +32,7 @@
 	}
 %end
 
-// Cascade View Controller (Messages)
+// Cascade
 %hook _TtC7grindrx25BaseCascadeViewController
 	- (BOOL)canDisplayBannerAds {
 		return NO;
@@ -48,6 +48,22 @@
 
 	- (BOOL)shouldPresentInterstitialAd {
 		return NO;
+	}
+%end
+
+// Root View Controller
+@interface _TtC13GrindrCascade10AdMrecCell : UIView
+	- (id)initWithFrame: (struct CGRect) rect;
+@end
+
+%hook _TtC13GrindrCascade10AdMrecCell
+	- (id)initWithFrame: (struct CGRect) rect {
+		CGRect frame = CGRectZero;
+		return %orig(frame);
+	}
+	- (id)initWithCoder: (id) coder {
+		CGRect frame = CGRectZero;
+		return [self initWithFrame:frame];
 	}
 %end
 
