@@ -3,6 +3,7 @@
 // Since there is only one ad cell in the messages tab, we can just store a reference to its indexPath
 id messagesAdCell;
 
+// Block ads in chat listing
 %hook _TtC7grindrx27MessagesTableViewController
 	- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2 {
 		UITableViewCell *tbvCell = %orig;
@@ -22,5 +23,11 @@ id messagesAdCell;
 		}
 
 		return %orig;
+	}
+%end
+
+%hook _TtC9GrindrAds6AdView
+	- (void) viewWillDisplay {
+		[self setHidden: YES];
 	}
 %end
