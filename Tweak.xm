@@ -8,7 +8,6 @@
 
 		if ([itemClassName isEqualToString:@"grindrx.TableViewAdCell"]) {
 			[tbvCell setHidden: YES];
-			return tbvCell;
 		}
 		return tbvCell;
 
